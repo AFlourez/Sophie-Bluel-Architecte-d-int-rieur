@@ -1,8 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
+/* Reset CSS */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -23,6 +19,11 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
+html{
+	background-color:#FFFEF8;
+}
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -46,55 +47,51 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-/** end reset css**/
+/* End reset CSS */
+
+/* General styles */
 body {
 	max-width: 1140px;
-	margin:auto;
-	font-family: 'Work Sans' ;
+	margin: auto;
+	font-family: 'Work Sans', sans-serif;
 	font-size: 14px;
 }
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px 0;
 }
 section {
-	margin: 50px 0
+	margin: 50px 0;
 }
-
-h1{
+h1 {
 	display: flex;
 	flex-direction: column;
-	font-family: 'Syne';
+	font-family: 'Syne', sans-serif;
 	font-size: 22px;
 	font-weight: 800;
-	color: #B1663C
+	color: #B1663C;
 }
-
 h1 > span {
-	font-family: 'Work Sans';
-	font-size:10px;
+	font-family: 'Work Sans', sans-serif;
+	font-size: 10px;
 	letter-spacing: 0.1em;
-;
 }
-
-h2{
-	font-family: 'Syne';
+h2 {
+	font-family: 'Syne', sans-serif;
 	font-weight: 700;
 	font-size: 30px;
-	color: #1D6154
+	color: #1D6154;
 }
 nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-
 }
 nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 }
-
 li:hover {
 	color: #B1663C;
 }
@@ -103,21 +100,19 @@ li:hover {
 	align-items: center;
 }
 #introduction figure {
-	flex: 1
+	flex: 1;
 }
 #introduction img {
 	display: block;
 	margin: auto;
 	width: 80%;
 }
-
 #introduction article {
-	flex: 1
+	flex: 1;
 }
 #introduction h2 {
 	margin-bottom: 1em;
 }
-
 #introduction p {
 	margin-bottom: 0.5em;
 }
@@ -132,29 +127,25 @@ li:hover {
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
 }
-
 .gallery img {
 	width: 100%;
-
 }
 #contact {
 	width: 50%;
-margin: auto;
+	margin: auto;
 }
 #contact > * {
 	text-align: center;
-
 }
-#contact h2{
+#contact h2 {
 	margin-bottom: 20px;
 }
 #contact form {
 	text-align: left;
-	margin-top:30px;
+	margin-top: 30px;
 	display: flex;
 	flex-direction: column;
 }
-
 #contact input {
 	height: 50px;
 	font-size: 1.2em;
@@ -168,25 +159,30 @@ margin: auto;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-
-input[type="submit"]{
-	font-family: 'Syne';
+input[type="submit"] {
+	font-family: 'Syne', sans-serif;
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em auto ;
+	margin: 2em auto;
 	width: 180px;
 	text-align: center;
-	border-radius: 60px ;
+	border-radius: 60px;
 }
-
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
+	margin: 2em;
 }
 
-/* /////////////////////////////////////////////////////////////// */
+nav ul li a{
+	color : black;
+	text-decoration: none;
+}
+
+nav ul li a:visited{
+	font-weight: bold;
+}
 
 #filter-container {
 	display: flex;
@@ -194,19 +190,152 @@ footer nav ul {
 	margin: 40px 30px 40px 30px;
 	gap: 10px;
 }
-
-#filter-container button{
+#filter-container button {
 	align-items: center;
 	color: #1D6154;
-	background-color: white;
- 	width: auto;
- 	border-radius: 25px;
-  	border: 1px solid #1D6154;
- 	padding: 4px 19px;
- 	font-size: 16px;
+	background-color: #FFFEF8;
+	width: auto;
+	border-radius: 25px;
+	border: 1px solid #1D6154;
+	padding: 4px 19px;
+	font-size: 16px;
+	font-family: 'Syne', sans-serif;
+}
+#filter-container button:hover {
+	background-color: #1D6154;
+	color: #FFFEF8;
 }
 
-#filter-container button:hover{
+/* /////////////////////////////////////////////////////////////// */
+
+b{
+	font-size: 14px;
+	padding-bottom: 8px;
+}
+
+h3 {
+	font-family: 'Syne', sans-serif;
+ 	font-weight: 700;
+  	font-size: 30px;
+ 	color: #1D6154;
+	margin-top: 150px;
+	margin-bottom: 50px;
+	display: flex;
+	justify-content: center;
+}
+
+form{
+	display: flex;
+  	justify-content: center;
+}
+
+.container{
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.emaillogin{
+	display: flex;
+	/* justify-content: center; */
+	flex-direction: column;
+}
+
+.emaillogin input, .pswlogin input{
+	width: 379px;
+	height: 51px;
+	margin-top: 5px;
+	border: none;
+	box-shadow: 0px 4px 14px 0px #00000017;
+}
+
+.pswlogin{
+	display: flex;
+	/* justify-content: center; */
+	flex-direction: column;
+	padding-bottom: 30px;
+}
+
+.container button{
+	border-radius: 60px;
+	width: 179px;
+	height: 36px;
+	font-family: 'Syne', sans-serif;
 	background-color: #1D6154;
+	color:#FFFEF8;
+}
+
+.containerlogin{
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	align-items: center;
+}
+
+.containerlogin a{
+	color : black;
+	text-decoration: none;
+}
+
+.containerlogin a:hover{
+	text-decoration: underline;
+}
+
+#edit-mode-banner{
+	display: none;
+	background-color: black;
 	color: white;
+	text-align: center;
+	padding: 22px;
+}
+
+
+/* ////////////testModal/////////////////// */
+
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+    padding-top: 60px; 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#photo-gallery img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
 }

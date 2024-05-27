@@ -1,3 +1,4 @@
+
 function getWorks() {
   fetch('http://localhost:5678/api/works')
     .then(response => {
@@ -56,7 +57,6 @@ function populateGallery(data) {
 
 function filterItemsByCategory(category) {
   const galleryItems = document.querySelectorAll('.gallery figure');
-
   galleryItems.forEach(item => {
     const itemCategory = item.classList[0]; 
     if (category === 'Tous' || itemCategory === `category-${category.replace(/\s+/g, '-')}`) {
@@ -67,4 +67,70 @@ function filterItemsByCategory(category) {
   });
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  const authLink = document.getElementById('auth-link');
+  const editModeBanner = document.getElementById('edit-mode-banner');
+  const loggedIn = localStorage.getItem('loggedIn');
+
+  if (loggedIn === 'true') {
+      authLink.innerHTML = '<a href="#" id="logout">logout</a>';
+      editModeBanner.style.display = 'block';
+      
+      document.getElementById('logout').addEventListener('click', function(event) {
+          event.preventDefault();
+          localStorage.removeItem('loggedIn');
+          window.location.href = 'index.html';
+      });
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const authLink = document.getElementById('auth-link');
+  const editModeBanner = document.getElementById('edit-mode-banner');
+  const editModal = document.getElementById('edit-modal');
+  const closeModal = document.getElementsByClassName('close')[0];
+  const addPhotoButton = document.getElementById('add-photo');
+  const photoGallery = document.getElementById('photo-gallery');
+  const loggedIn = localStorage.getItem('loggedIn');
+
+  // Check if the user is logged in
+  if (loggedIn === 'true') {
+      authLink.innerHTML = '<a href="#" id="logout">logout</a>';
+      editModeBanner.style.display = 'block';
+      
+      document.getElementById('logout').addEventListener('click', function(event) {
+          event.preventDefault();
+          localStorage.removeItem('loggedIn');
+          window.location.href = 'index.html';
+      });
+
+      // Show modal when edit mode banner is clicked
+      editModeBanner.addEventListener('click', function() {
+          editModal.style.display = 'block';
+      });
+
+      // Close the modal when the close button is clicked
+      closeModal.onclick = function() {
+          editModal.style.display = 'none';
+      };
+
+      // Close the modal when clicking outside of the modal content
+      window.onclick = function(event) {
+          if (event.target === editModal) {
+              editModal.style.display = 'none';
+          }
+      };
+
+      // Handle adding photos
+      addPhotoButton.addEventListener('click', function() {
+          const newPhoto = document.createElement('img');
+          newPhoto.src = 'https://via.placeholder.com/100'; // Placeholder image source
+          newPhoto.alt = 'New Photo';
+          newPhoto.addEventListener('click', function() {
+              photoGallery.removeChild(newPhoto);
+          });
+          photoGallery.appendChild(newPhoto);
+      });
+  }
+});
 getWorks();
