@@ -186,3 +186,27 @@ footer nav ul {
 	margin: 2em
 }
 
+/* /////////////////////////////////////////////////////////////// */
+
+#filter-container {
+	display: flex;
+	justify-content: center;
+	margin: 40px 30px 40px 30px;
+	gap: 10px;
+}
+
+#filter-container button{
+	align-items: center;
+	color: #1D6154;
+	background-color: white;
+ 	width: auto;
+ 	border-radius: 25px;
+  	border: 1px solid #1D6154;
+ 	padding: 4px 19px;
+ 	font-size: 16px;
+}
+
+#filter-container button:hover{
+	background-color: #1D6154;
+	color: white;
+}
