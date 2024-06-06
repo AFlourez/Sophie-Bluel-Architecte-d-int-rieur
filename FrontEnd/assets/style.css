@@ -125,11 +125,14 @@ li:hover {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
-	grid-row-gap: 20px;
+	grid-row-gap: 30px;
 }
 .gallery img {
 	width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
+
 #contact {
 	width: 50%;
 	margin: auto;
@@ -146,15 +149,13 @@ li:hover {
 	display: flex;
 	flex-direction: column;
 }
-#contact input {
+#contact input{
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label {
-	margin: 2em 0 1em 0;
-}
+
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
@@ -180,8 +181,8 @@ nav ul li a{
 	text-decoration: none;
 }
 
-nav ul li a:visited{
-	font-weight: bold;
+nav ul li a:hover{
+	color: #B1663C;
 }
 
 #filter-container {
@@ -281,14 +282,32 @@ form{
 	text-decoration: underline;
 }
 
-#edit-mode-banner{
+#edit-button {
 	display: none;
-	background-color: black;
-	color: white;
-	text-align: center;
-	padding: 22px;
+	color: black;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
 }
 
+#edit-button:hover {
+    text-decoration: underline;
+}
+
+#edit-mode-banner {
+	background-color: black;
+	color: white;
+	display: flex;
+	text-align: center;
+	padding: 10px 0px 10px 0px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
 
 /* ////////////testModal/////////////////// */
 
@@ -298,6 +317,8 @@ form{
     z-index: 1; 
     left: 0;
     top: 0;
+	right: 0;
+	bottom: 0;
     width: 100%; 
     height: 100%; 
     overflow: auto; 
@@ -307,18 +328,61 @@ form{
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color:#FFFFFF;
     margin: 5% auto; 
+	gap: 30px;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; 
+    width: 630px; 
+	height: 670px;
+	border-radius: 10px;
+}
+
+.modal-content h2{
+	text-align: center;
+	margin-top: 0px;
+	margin: 2em auto;
+	color: black;
+	font-size: 27px;
+}
+
+#photo-gallery {
+    margin: 2em auto;
+    width: 440px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .close {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: bold;
+	margin-right: 10px;
+}
+
+/* Styles pour la flèche de retour */
+div#add-photo-container {
+    position: relative;
+	left: 15px;
+	padding: 0px;
+	gap: 10px;
+}
+
+#back-arrow {
+    position: absolute;
+    top: 5px;
+    left: 0px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+#back-arrow:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .close:hover,
@@ -328,14 +392,183 @@ form{
     cursor: pointer;
 }
 
-#photo-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
 #photo-gallery img {
-    width: 100px;
-    height: 100px;
+    width: 77px;
+    height: 103px;
     object-fit: cover;
 }
+
+.photo-container {
+    position: relative;
+    display: inline-block;
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0px 4px 14px 0px #00000017;
+}
+
+.photo-container img {
+    display: block;
+}
+
+.photo-container .delete-icon {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+}
+
+/* //////////////////////////////////////////////// */
+#add-photo{
+	display: flex;
+	justify-content: center;
+	width:237px	;
+	font-size: 1.2em;
+  	border: none;
+  	font-family: 'Syne', sans-serif;
+  	color: white;
+  	background-color: #1D6154;
+  	margin: 2em auto;
+  	text-align: center;
+  	border-radius: 60px;
+  	padding: 5px 10px;
+}
+
+#submit-photo{
+	display: flex;
+	justify-content: center;
+	width:237px	;
+  	border: none;
+  	font-family: 'Syne', sans-serif;
+  	color: white;
+  	background-color:#A7A7A7;
+  	margin: 2em auto;
+  	text-align: center;
+  	border-radius: 60px;
+  	padding: 5px 10px;
+}
+
+#separator-line {
+    width: 420px;
+    height: 0px;
+    margin:auto;
+    border-top: 1px solid #000; /* Ligne horizontale */
+    opacity: 1; /* Rendre la ligne visible */
+	position: relative;
+	top: 25px;
+}
+
+
+/* /////////////////////////////////////////////// */
+#add-photo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* width: 100%; */
+    height: 670px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.upload-area {
+    width: 420px;
+    height: 169px;
+    /* border: 2px dashed #ccc; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.upload-area img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+label.upload-label{
+	width: inherit;
+  	height: inherit;
+}
+
+.upload-label {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 169px;
+		/* border: 2px dashed lightgray; */
+		background-color: #E8F1F6;
+		border-radius: 3px;
+		/* padding: 20px; */
+		color: lightgray;
+		text-align: center;
+		cursor: pointer;
+		position: relative;
+		margin-bottom: 10px;
+	}
+
+.upload-label i {
+	font-size: 4.9rem;
+	margin-bottom: 10px;
+	color: lightgray;
+}
+
+.upload-button:hover{
+	font-weight: bold;
+}
+
+
+.upload-label .upload-button {
+	background-color: lightgray;
+	color: #306685;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 60px;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+.upload-label .file-info {
+	font-size: 0.8rem;
+	color: lightgray;
+}
+
+#photo-file-upload {
+	display: none; /* Hide the actual file input */
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input[type="text"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+button#submit-photo {
+    padding: 10px 20px;
+}
+
+.modal-content button{
+	position: relative;
+	top: 50px;
+}
+
+#new-photo-title,
+#new-photo-category{
+	width: 420px;
+	background-color: white;
+	height: 51px;
+  	font-size: 1.2em;
+  	border: none;
+  	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	margin-top: 8px;
+}
+
