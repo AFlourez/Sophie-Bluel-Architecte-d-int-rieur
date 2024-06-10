@@ -373,6 +373,7 @@ function setActiveButton(activeButton) {
 }
 
 function populateGallery(data) {
+    console.log(data)
     const gallery = document.querySelector('.gallery');
     gallery.innerHTML = '';
 
@@ -394,14 +395,17 @@ function populateGallery(data) {
 }
 
 function filterItemsByCategory(category) {
-    const galleryItems = document.querySelectorAll('.gallery figure');
-    galleryItems.forEach(item => {
-        const itemCategory = item.classList[0];
-        if (category === 'Tous' || itemCategory === `category-${category.replace(/\s+/g, '-')}`) {
-            item.style.display = '';
-        } else {
-            item.style.display = 'none';
-        }
-    });
+    fetch("http://localhost:5678/api/works") // Modifier l'URL de l'API pour filtrer par catégorie
+        .then(response => response.json())
+        .then(data => {
+            if (category === 'Tous'){
+                populateGallery(data); // Afficher toutes les photos
+            } else {
+            // Filtrer les éléments par catégorie
+            const filteredData = data.filter(element => element.category.name === category);
+            populateGallery(filteredData);
+            }
+        })
+        .catch(error => console.error('Error fetching filtered photos:', error));
 }
 
