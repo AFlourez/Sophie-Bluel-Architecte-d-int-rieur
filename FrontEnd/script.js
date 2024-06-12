@@ -343,6 +343,12 @@ function getWorks() {
             const sortedCategories = uniqueCategories.sort((a, b) => a.length - b.length);
             createButtons(sortedCategories);
             populateGallery(data);
+
+            // bouton "Tous" actif par défaut
+            const tousButton = document.querySelector('.filter-button');
+            if (tousButton) {
+                tousButton.classList.add('active');
+            }
         })
         .catch(error => {
             console.error('Erreur:', error);
